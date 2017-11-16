@@ -9,6 +9,8 @@
 </template>
 
 <script>
+// import Message from './lib/index'
+
 export default {
   methods: {
     notification: function(type) {
@@ -19,6 +21,7 @@ export default {
         success: '这是表示成功的消息'
       }
       this.$Message[type](msg[type])
+      // Message[type](msg[type])
     }
   }
 }
