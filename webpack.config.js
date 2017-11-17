@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var NyanProgressPlugin = require('nyan-progress-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -89,7 +90,10 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new NyanProgressPlugin()
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
