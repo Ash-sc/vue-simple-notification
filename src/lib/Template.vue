@@ -24,15 +24,20 @@ export default {
     notificationArr: [],
     position: 'top-right',
     bubbling: 'up',
-    closeBtn: false
+    closeBtn: false,
+    onlyOneNotification: false
   }),
 
   methods: {
     add: function(noticeProps) {
       clearInterval(this.timer)
-      this.bubbling === 'up' ?
-        this.notificationArr.push({ ...noticeProps, willClose: false })
-        : this.notificationArr.splice(0, 0, { ...noticeProps, willClose: false })
+      if (!this.onlyOneNotification) {
+        this.bubbling === 'up' ?
+          this.notificationArr.push({ ...noticeProps, willClose: false })
+          : this.notificationArr.splice(0, 0, { ...noticeProps, willClose: false })
+      } else {
+        this.notificationArr = [{ ...noticeProps, willClose: false }]
+      }
       this.refreshNotification()
       this.timer = setInterval(function() {
         this.refreshNotification()
@@ -50,6 +55,7 @@ export default {
       this.position = obj.position
       this.bubbling = obj.bubbling
       this.closeBtn = obj.closeBtn
+      this.onlyOneNotification = obj.onlyOneNotification
     },
     refreshNotification: function() {
       this.notificationArr.filter(item => {

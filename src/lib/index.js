@@ -53,6 +53,9 @@ export default {
             if (typeof options.closeBtn === 'boolean') {
                 configObj.closeBtn = options.closeBtn;
             }
+            if (typeof options.onlyOneNotification === 'boolean') {
+                configObj.onlyOneNotification = options.onlyOneNotification;
+            }
             let instance = getMessageInstance();
             instance.config(configObj);
         }

@@ -90,5 +90,10 @@ export default {
   * 类型：**Boolean**
   * 是否必须：**非必须**
   * 默认值：false
+* **2. onlyOneNotification**
+  * 是否同时只允许一个提示框
+  * 类型：**Boolean**
+  * 是否必须：**非必须**
+  * 默认值：false
 
 
