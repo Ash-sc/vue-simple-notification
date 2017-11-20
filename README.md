@@ -56,9 +56,9 @@ export default {
 
 #### 3. Message对象的方法
 
-**Message有success()、info()、error()、warning()四个方法**
+**Message提供四个弹框方法：success()、info()、error()、warning()；和一个全局配置方法：config()**
 
-**参数：**
+**弹框方法参数：**
 
 * **1. content：**
   * 提示信息内容
@@ -68,5 +68,27 @@ export default {
   * 类型：**Number**
   * 是否必须：**非必须**
   * 默认值：3（s）
+
+**配置方法参数：**
+* **1. position：**
+  * 提示框位置
+  * 类型：**String** (值可以为：'top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right' 中的一个)
+  * 是否必须：**非必须**
+  * 默认值：'top-right'
+* **2. bubbling**
+  * 冒泡方向（旧通知消失时，动画的方向）
+  * 类型：**String** (值可以为：'up', 'down' 中的一个)
+  * 是否必须：**非必须**
+  * 默认值：'up'
+* **2. duration**
+  * 弹框持续时间（优先级低于弹框方法中的duration）
+  * 类型：**Number**
+  * 是否必须：**非必须**
+  * 默认值：3（s）
+* **2. closeBtn**
+  * 是否需要关闭按钮
+  * 类型：**Boolean**
+  * 是否必须：**非必须**
+  * 默认值：false
 
 

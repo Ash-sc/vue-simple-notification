@@ -26,6 +26,9 @@ Notification.newInstance = properties => {
         remove(key) {
           vuesimplenotification.close(key);
         },
+        config(obj) {
+          vuesimplenotification.config(obj);
+        },
         component: vuesimplenotification,
         destroy() {
             document.body.removeChild(div);

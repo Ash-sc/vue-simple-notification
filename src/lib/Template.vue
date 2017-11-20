@@ -1,5 +1,5 @@
 <template>
-  <div class="notification-bg">
+  <div class="notification-bg" :class="position">
     <div
       v-for="(item, index) in notificationArr"
       :key="item.closeTime"
@@ -11,6 +11,7 @@
         :class="`icomoon-${item.type}`"
       ></span>
       {{item.content}}
+      <i class="close-button" v-if="closeBtn" @click="closeItem(index)">+</i>
     </div>
   </div>
 </template>
@@ -20,20 +21,35 @@ import moment from 'moment'
 export default {
   data: () => ({
     timer: null,
-    notificationArr: []
+    notificationArr: [],
+    position: 'top-right',
+    bubbling: 'up',
+    closeBtn: false
   }),
 
   methods: {
     add: function(noticeProps) {
       clearInterval(this.timer)
-      this.notificationArr.push({ ...noticeProps, willClose: false })
+      this.bubbling === 'up' ?
+        this.notificationArr.push({ ...noticeProps, willClose: false })
+        : this.notificationArr.splice(0, 0, { ...noticeProps, willClose: false })
       this.refreshNotification()
       this.timer = setInterval(function() {
         this.refreshNotification()
       }.bind(this), 200)
     },
-    remove: function(key) {
-      console.log('close key', key)
+    closeItem: function(index) {
+      clearInterval(this.timer)
+      this.notificationArr[index].willClose = true
+      this.refreshNotification()
+      this.timer = setInterval(function() {
+        this.refreshNotification()
+      }.bind(this), 200)
+    },
+    config: function(obj) {
+      this.position = obj.position
+      this.bubbling = obj.bubbling
+      this.closeBtn = obj.closeBtn
     },
     refreshNotification: function() {
       this.notificationArr.filter(item => {
@@ -61,9 +77,49 @@ export default {
 .notification-bg {
   position: fixed;
   z-index: 9999;
-  right: 20px;
-  top: 20px;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+
+  &.top-left {
+    left: 20px;
+    top: 20px;
+  }
+
+  &.top-center {
+    left: 0px;
+    top: 20px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.top-right {
+    right: 20px;
+    top: 20px;
+  }
+
+  &.center {
+    left: 0;
+    top: 0;
+    margin-top: calc(50vh - 32px);
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.bottom-left {
+    left: 20px;
+    bottom: 20px;
+  }
+
+  &.bottom-center {
+    left: 0;
+    bottom: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.bottom-right {
+    right: 20px;
+    bottom: 20px;
+  }
 
   @keyframes notificationShow {
     0% {
@@ -113,6 +169,7 @@ export default {
     animation: notificationShow .3s both ease;
     user-select: none;
     box-sizing: border-box;
+    position: relative;
   }
 
   .notification-item-success {
@@ -158,6 +215,18 @@ export default {
 
   .icomoon-error::before {
     content: "\e902";
+  }
+
+  .close-button {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    transform: rotate(45deg);
+    font-size: 20px;
   }
 
 }

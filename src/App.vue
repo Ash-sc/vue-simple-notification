@@ -23,6 +23,13 @@ export default {
       this.$Message[type](msg[type])
       // Message[type](msg[type])
     }
+  },
+  created: function() {
+    this.$Message.config({
+      position: 'bottom-center',
+      bubbling: 'down',
+      closeBtn: true
+    })
   }
 }
 </script>
