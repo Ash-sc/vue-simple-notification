@@ -70,30 +70,43 @@ export default {
   * 默认值：3（s）
 
 **配置方法参数：**
-* **1. position：**
+* **position：**
   * 提示框位置
   * 类型：**String** (值可以为：'top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right' 中的一个)
   * 是否必须：**非必须**
   * 默认值：'top-right'
-* **2. bubbling**
+* **bubbling**
   * 冒泡方向（旧通知消失时，动画的方向）
   * 类型：**String** (值可以为：'up', 'down' 中的一个)
   * 是否必须：**非必须**
   * 默认值：'up'
-* **2. duration**
+* **duration**
   * 弹框持续时间（优先级低于弹框方法中的duration）
   * 类型：**Number**
   * 是否必须：**非必须**
   * 默认值：3（s）
-* **2. closeBtn**
+* **closeBtn**
   * 是否需要关闭按钮
   * 类型：**Boolean**
   * 是否必须：**非必须**
   * 默认值：false
-* **2. onlyOneNotification**
+* **onlyOneNotification**
   * 是否同时只允许一个提示框
   * 类型：**Boolean**
   * 是否必须：**非必须**
   * 默认值：false
+
+* **示例**
+```
+Message.config({
+  position: 'center',
+  bubbling: 'down',
+  duration: 1.5,
+  closeBtn: true
+});
+...
+Message.warning('这是一条警告提示信息......xxxxxxxxx');
+...
+```
 
 
