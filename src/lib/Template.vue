@@ -58,7 +58,7 @@ export default {
       this.onlyOneNotification = obj.onlyOneNotification
     },
     refreshNotification: function() {
-      this.notificationArr.filter(item => {
+      this.notificationArr = this.notificationArr.filter(item => {
         const milliseconds = moment().format('x') - item.closeTime
         if (milliseconds >= 0) {
           item.willClose = true
