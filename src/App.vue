@@ -27,7 +27,8 @@ export default {
   created: function() {
     this.$Message.config({
       bubbling: 'up',
-      closeBtn: true
+      closeBtn: true,
+      duration: 100
     })
   }
 }

@@ -71,7 +71,7 @@ export default {
 </script>
 <style lang="scss">
 @font-face {
-  font-family: 'icomoon';
+  font-family: 'icomoonFont';
   src:  url('../assets/fonts/icomoon.eot?tha90q');
   src:  url('../assets/fonts/icomoon.eot?tha90q#iefix') format('embedded-opentype'),
     url('../assets/fonts/icomoon.ttf?tha90q') format('truetype'),
@@ -199,10 +199,10 @@ export default {
   }
 
   .notification-icon {
-    font: normal normal normal 26px icomoon;
+    font: normal normal normal 26px icomoonFont;
     position: absolute;
+    left: 24px;
     line-height: 1;
-    margin-left: -50px;
     color: #fff;
     text-align: center;
   }
