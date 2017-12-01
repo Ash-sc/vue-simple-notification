@@ -26,10 +26,8 @@ export default {
   },
   created: function() {
     this.$Message.config({
-      position: 'bottom-center',
       bubbling: 'up',
-      closeBtn: true,
-      onlyOneNotification: true
+      closeBtn: true
     })
   }
 }
