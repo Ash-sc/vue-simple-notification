@@ -5,20 +5,16 @@
 > 效果如下：
 ![显示效果](https://raw.githubusercontent.com/Ash-sc/vue-simple-notification/master/example/demo.png)
 
-
-### 1. 安装
-
-``` bash
-npm install vue-simple-notification
-```
+> [Demo](http://ashshen.cc:6655/#/vue-simple-notification)
 
 
-#### 2. 使用
+#### 使用
 
 > 方法 1：
 ```
 # 全局注册
 import Message from 'vue-simple-notification'
+import 'vue-simple-notification/dist/style.css'
 Vue.prototype.$Message = Message
 ...
 
@@ -40,6 +36,7 @@ export default {
 <script>
 # 局部注册
 import Message from 'vue-simple-notification'
+import 'vue-simple-notification/dist/style.css'
 
 # 使用
 export default {
@@ -54,7 +51,7 @@ export default {
 ```
 
 
-#### 3. Message对象的方法
+#### Message对象的方法
 
 **Message提供四个弹框方法：success()、info()、error()、warning()；和一个全局配置方法：config()**
 

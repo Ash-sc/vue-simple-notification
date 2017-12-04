@@ -1,13 +1,14 @@
-import Notification from './Notification';
+import Notification from './Notification'
 import moment from 'moment'
+import '../assets/style.scss'
 
-let defaultDuration = 3;
-let messageInstance;
+let defaultDuration = 3
+let messageInstance
 
 function getMessageInstance() {
-    messageInstance = messageInstance || Notification.newInstance();
+    messageInstance = messageInstance || Notification.newInstance()
 
-    return messageInstance;
+    return messageInstance
 }
 
 function notice(content, duration = defaultDuration, type, onClose) {
@@ -15,57 +16,57 @@ function notice(content, duration = defaultDuration, type, onClose) {
         onClose = function () {}
     }
 
-    let instance = getMessageInstance();
+    let instance = getMessageInstance()
 
     instance.notice({
         content,
         type,
         closeTime: moment().add(duration, 's').format('x'),
         'on-close': onClose
-    });
+    })
 }
 
 export default {
     info(content, duration, onClose) {
-        return notice(content, duration, 'info', onClose);
+        return notice(content, duration, 'info', onClose)
     },
     success(content, duration, onClose) {
-        return notice(content, duration, 'success', onClose);
+        return notice(content, duration, 'success', onClose)
     },
     warning(content, duration, onClose) {
-        return notice(content, duration, 'warning', onClose);
+        return notice(content, duration, 'warning', onClose)
     },
     error(content, duration, onClose) {
-        return notice(content, duration, 'error', onClose);
+        return notice(content, duration, 'error', onClose)
     },
     // 配置项
     config (options) {
-        const positionArr = ['top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right'];
-        const bubblingArr = ['up', 'down'];
+        const positionArr = ['top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right']
+        const bubblingArr = ['up', 'down']
         if (options.position) {
-            const configObj = {};
+            const configObj = {}
             if (positionArr.indexOf(options.position) >= 0) {
-                configObj.position = options.position;
+                configObj.position = options.position
             }
             if (bubblingArr.indexOf(options.bubbling) >= 0) {
-                configObj.bubbling = options.bubbling;
+                configObj.bubbling = options.bubbling
             }
             if (typeof options.closeBtn === 'boolean') {
-                configObj.closeBtn = options.closeBtn;
+                configObj.closeBtn = options.closeBtn
             }
             if (typeof options.onlyOneNotification === 'boolean') {
-                configObj.onlyOneNotification = options.onlyOneNotification;
+                configObj.onlyOneNotification = options.onlyOneNotification
             }
-            let instance = getMessageInstance();
-            instance.config(configObj);
+            let instance = getMessageInstance()
+            instance.config(configObj)
         }
         if (options.duration) {
-            defaultDuration = options.duration;
+            defaultDuration = options.duration
         }
     },
     destroy() {
-        let instance = getMessageInstance();
-        messageInstance = null;
-        instance.destroy();
+        let instance = getMessageInstance()
+        messageInstance = null
+        instance.destroy()
     }
 }

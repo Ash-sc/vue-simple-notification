@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var NyanProgressPlugin = require('nyan-progress-webpack-plugin')
+ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -20,19 +21,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
+        use: process.env.NODE_ENV !== 'production' ? [
           'vue-style-loader',
           'css-loader',
           'sass-loader'
-        ],
-      },
-      {
-        test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader?indentedSyntax'
-        ],
+        ] : ExtractTextPlugin.extract('css-loader!sass-loader')
       },
       {
         test: /\.vue$/,
@@ -122,6 +115,10 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      allChunks : true // 若要按需加载 CSS 则请注释掉该行
     })
   ])
 }
