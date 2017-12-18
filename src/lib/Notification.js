@@ -1,6 +1,8 @@
 import VueSimpleNotification from './template.vue';
 import Vue from 'vue';
 
+const Notification = {};
+
 Notification.newInstance = properties => {
     const _props = properties || {};
 
@@ -13,7 +15,7 @@ Notification.newInstance = properties => {
     div.innerHTML = `<vue-simple-notification${props}></vue-simple-notification>`;
     document.body.appendChild(div);
 
-    const vuesimplenotification = new Vue({
+    const vueSimpleNotification = new Vue({
         el: div,
         data: _props,
         components: { VueSimpleNotification }
@@ -21,15 +23,15 @@ Notification.newInstance = properties => {
 
     return {
         notice(noticeProps) {
-          vuesimplenotification.add(noticeProps);
+            vueSimpleNotification.add(noticeProps);
         },
         remove(key) {
-          vuesimplenotification.close(key);
+            vueSimpleNotification.close(key);
         },
         config(obj) {
-          vuesimplenotification.config(obj);
+            vueSimpleNotification.config(obj);
         },
-        component: vuesimplenotification,
+        component: vueSimpleNotification,
         destroy() {
             document.body.removeChild(div);
         }
