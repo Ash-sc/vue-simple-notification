@@ -1,7 +1,7 @@
 {
   "name": "vue-simple-notification",
   "description": "a simple vue notification component",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "Ash",
   "license": "MIT",
   "scripts": {

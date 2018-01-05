@@ -5,7 +5,7 @@
 > 效果如下：
 ![显示效果](https://raw.githubusercontent.com/Ash-sc/vue-simple-notification/master/example/demo.png)
 
-> [Demo](http://ashshen.cc:6655/#/vue-simple-notification)
+> [Demo](http://demo.2017017.xyz/vue-demo/#/vue-simple-notification)
 
 
 #### 使用
